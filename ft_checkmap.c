@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:02:35 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/05 21:30:57 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:36:31 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,5 @@ void	ft_checkmap(char **mp)
 	if (ft_check_content('C', mp) == 0)
 		ft_error("Error\nThe map must contain at least 1 collectible,");
 	ft_check_path(mp);
+	ft_creat_gm(mp);
 }

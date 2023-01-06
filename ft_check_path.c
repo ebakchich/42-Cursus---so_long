@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:22:18 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 02:03:06 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:15:04 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void    ft_chr_p(t_list *l, char **mp)
             }
             j++;
         }
+        i++;
     }
 }
 
@@ -104,5 +105,8 @@ void    ft_check_path(char **mp)
         i++;
     l->num_lines = i;
     ft_chr_path(l, l->px, l->py);
-    printf("jkhj");
+    if (l->nc == 0 && l->ex == 0)
+        return ;
+	else
+        ft_error("Error\ninvalid path");
 }
