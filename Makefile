@@ -6,11 +6,11 @@
 #    By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/04 18:30:45 by ebakchic          #+#    #+#              #
-#    Updated: 2023/01/07 21:40:19 by ebakchic         ###   ########.fr        #
+#    Updated: 2023/01/08 20:39:05 by ebakchic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS    = main.c read_map.c ft_checkmap.c ft_error.c ft_check_path.c ft_creat_gm.c ft_utils.c
+SRCS    = main.c read_map.c ft_checkmap.c ft_error.c ft_check_path.c ft_creat_gm.c ft_utils.c ft_anim_c.c
 NAME    = so_long
 OBJS 	= ${SRCS:.c=.o}
 AR		= libft/libft.a

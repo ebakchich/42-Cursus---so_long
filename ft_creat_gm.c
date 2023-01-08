@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:19:33 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/08 17:38:08 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:03:07 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void    ft_img(k_list *s)
 	s->e = mlx_xpm_file_to_image(s->mx, "./img/e.xpm", &wid, &hei);
 	if (!s->e)
 		ft_error("Error\n");
-	s->c = mlx_xpm_file_to_image(s->mx, "./img/c.xpm", &wid, &hei);
+	s->c = mlx_xpm_file_to_image(s->mx, "./img/c1.xpm", &wid, &hei);
 	if (!s->c)
 		ft_error("Error\n");
 	s->s = mlx_xpm_file_to_image(s->mx, "./img/s.xpm", &wid, &hei);
@@ -72,6 +72,9 @@ void    ft_img(k_list *s)
 		ft_error("Error\n");
 	s->w = mlx_xpm_file_to_image(s->mx, "./img/w.xpm", &wid, &hei);
 	if (!s->w)
+		ft_error("Error\n");
+    s->n = mlx_xpm_file_to_image(s->mx, "./img/n.xpm", &wid, &hei);
+	if (!s->n)
 		ft_error("Error\n");
 }
 
@@ -84,7 +87,7 @@ void    ft_fill_mp(k_list *s, char **mp, int i, int j)
         {
             if (mp[i][j] == '1')
 		        mlx_put_image_to_window (s->mx, s->wn, s->w, j * 64, i * 64);
-            if (ft_strchr("0CEP", mp[i][j]) != NULL)
+            if (ft_strchr("0CEPN", mp[i][j]) != NULL)
 		        mlx_put_image_to_window(s->mx, s->wn, s->s, j * 64, i * 64);
             if (mp[i][j] == 'P')
 		        mlx_put_image_to_window(s->mx, s->wn, s->p, j * 64, i * 64);
@@ -92,6 +95,8 @@ void    ft_fill_mp(k_list *s, char **mp, int i, int j)
 		        mlx_put_image_to_window(s->mx, s->wn, s->c, j * 64, i * 64);
             if (mp[i][j] == 'E')
                 mlx_put_image_to_window(s->mx, s->wn, s->e, j * 64, i * 64);
+            if (mp[i][j] == 'N')
+                mlx_put_image_to_window(s->mx, s->wn, s->n, j * 64, i * 64);
             j++;
         }
         i++;
@@ -104,6 +109,7 @@ void    ft_creat_gm(char **mp)
 
     s.nn = 0;
     s.nm = 0;
+    s.an = 0;
     ft_cp_mapp(&s, mp);
     ft_chr_pp(&s);
     s.nc = ft_check_content('C', mp);
@@ -115,6 +121,7 @@ void    ft_creat_gm(char **mp)
     ft_img(&s);
     ft_fill_mp(&s, mp, 0, 0);
     mlx_hook(s.wn, 17, 0L, ft_action, &s);
+    mlx_loop_hook(s.mx, ft_anim_c, &s);
     mlx_key_hook(s.wn, ft_manage_key, &s);
     mlx_loop(s.mx);
 }

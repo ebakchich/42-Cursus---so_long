@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:22:18 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 18:15:04 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/09 00:06:15 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,40 +35,48 @@ void    ft_chr_p(t_list *l, char **mp)
     }
 }
 
-int    can_be_path(t_list *l, int x, int y)
+int    can_be_path(t_list *l, int x, int y, int i)
 {
 	if (y <= 0 || x <= 0)
 		return (-1);
 	if (x > l->line_lenth || y > l->num_lines)
 		return (-1);
-	if (l->cmp[y][x] == '1')
-		return (-1);
-	if (l->cmp[y][x] == 'E')
-	{
-		l->cmp[y][x] = '0';
-		l->ex--;
-	}
-	if (l->cmp[y][x] == 'C')
-	{
-		l->cmp[y][x] = '0';
-		l->nc--;
-	}
+    if (i == 0)
+    {
+        if (l->cmp[y][x] == '1' || l->cmp[y][x] == 'E' || l->cmp[y][x] == 'N')
+            return (-1);
+        if (l->cmp[y][x] == 'C')
+        {
+            l->cmp[y][x] = '0';
+            l->nc--;
+        }
+    }
+    else
+    {
+        if (l->cmp[y][x] == '1' || l->cmp[y][x] == 'N')
+            return (-1);
+        if (l->cmp[y][x] == 'E')
+        {
+            l->cmp[y][x] = '0';
+            l->ex--;
+        }
+    }
 	return (1);
 }
 
-void    ft_chr_path(t_list *l, int x, int y)
+void    ft_chr_path(t_list *l, int x, int y, int i)
 {
-    if (l->nc == 0 && l->ex == 0)
+    if (l->nc == 0)
         return ;
     l->cmp[y][x] = '1';
-    if (can_be_path(l, x + 1, y) != -1)
-		ft_chr_path(l, x + 1, y);
-	if (can_be_path(l, x, y - 1) != -1)
-		ft_chr_path(l, x, y - 1);
-	if (can_be_path(l, x - 1, y) != -1)
-		ft_chr_path(l, x - 1, y);
-	if (can_be_path(l, x, y + 1) != -1)
-		ft_chr_path(l, x, y + 1);
+    if (can_be_path(l, x + 1, y, i) != -1)
+		ft_chr_path(l, x + 1, y, i);
+	if (can_be_path(l, x, y - 1, i) != -1)
+		ft_chr_path(l, x, y - 1, i);
+	if (can_be_path(l, x - 1, y, i) != -1)
+		ft_chr_path(l, x - 1, y, i);
+	if (can_be_path(l, x, y + 1, i) != -1)
+		ft_chr_path(l, x, y + 1, i);
 }
 
 void    ft_cp_map(t_list *l, char **mp)
@@ -104,8 +112,9 @@ void    ft_check_path(char **mp)
     while (mp[i] != NULL)
         i++;
     l->num_lines = i;
-    ft_chr_path(l, l->px, l->py);
-    if (l->nc == 0 && l->ex == 0)
+    ft_chr_path(l, l->px, l->py, 0);
+    //ft_chr_path(l, l->px, l->py, 1);
+    if (l->nc == 0)
         return ;
 	else
         ft_error("Error\ninvalid path");

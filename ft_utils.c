@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:04:22 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/08 18:10:52 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/08 22:59:42 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,30 @@ void    ft_move(int i, int x, int y, k_list *s)
         ft_move_action(i, x, y, s);
     else if (s->mp[y][x] == 'E' && s->nc == 0)
     {
+        s->nm++;
+        ft_print_mov(s);
         write(1, "Winner Winner Chicken Dinner\n", 29);
-        exit (EXIT_SUCCESS);
+        exit(EXIT_SUCCESS);
     }
-    // else if (s->mp[y][x] == 'N')
-    // {
-        
-    // }
+    else if (s->mp[y][x] == 'N')
+    {
+        s->nm++;
+        ft_print_mov(s);
+        write(1, "Better Luck Next Time", 22);
+        exit(EXIT_FAILURE);
+    }
 }
 
 int    ft_action(void)
 {
-    exit (EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
     return (0);
 }
 
 int ft_manage_key(int k, k_list *s)
 {
     if (k == 53)
-        exit (EXIT_SUCCESS);
+        exit(EXIT_SUCCESS);
     if (k == 13)
         ft_move(0, s->x, s->y - 1, s);
     if (k == 1)
@@ -77,5 +82,5 @@ int ft_manage_key(int k, k_list *s)
         ft_move(2, s->x + 1, s->y, s);    
     if (k == 0)
         ft_move(3, s->x - 1, s->y, s);    
-return(0);
+    return(0);
 }
