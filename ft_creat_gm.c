@@ -6,11 +6,52 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:19:33 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 23:16:13 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:38:08 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void    ft_chr_pp(k_list *s)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (s->mp[i] != NULL)
+    {
+        j = 0;
+        while (s->mp[i][j] != '\0')
+        {
+            if (s->mp[i][j] == 'P')
+            {
+                s->x = j;
+                s->y = i;
+                return ;
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
+void    ft_cp_mapp(k_list *s, char **mp)
+{
+    int i;
+    char    **p;
+
+    i = 0;
+    while (mp[i] != NULL)
+        i++;
+    s->mp = malloc((i + 1) * sizeof(char *));
+    i = 0;
+    while (mp[i] != NULL)
+    {
+        s->mp[i] = ft_strdup(mp[i]);
+        i++;
+    }
+    s->mp[i] = NULL;
+}
 
 void    ft_img(k_list *s)
 {
@@ -42,7 +83,7 @@ void    ft_fill_mp(k_list *s, char **mp, int i, int j)
         while (mp[i][j] != '\0')
         {
             if (mp[i][j] == '1')
-		        mlx_put_image_to_window(s->mx, s->wn, s->w, j * 64, i * 64);
+		        mlx_put_image_to_window (s->mx, s->wn, s->w, j * 64, i * 64);
             if (ft_strchr("0CEP", mp[i][j]) != NULL)
 		        mlx_put_image_to_window(s->mx, s->wn, s->s, j * 64, i * 64);
             if (mp[i][j] == 'P')
@@ -62,6 +103,10 @@ void    ft_creat_gm(char **mp)
     k_list  s;
 
     s.nn = 0;
+    s.nm = 0;
+    ft_cp_mapp(&s, mp);
+    ft_chr_pp(&s);
+    s.nc = ft_check_content('C', mp);
     while (mp[s.nn])
         s.nn++;
     s.ln = ft_strlen(mp[0]);

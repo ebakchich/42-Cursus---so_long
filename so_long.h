@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:40:17 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 23:03:05 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:48:04 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_list
 
 typedef struct k_list
 {
+    char    **mp;
     void    *mx;
     void    *wn;
     void    *p;
@@ -41,6 +42,10 @@ typedef struct k_list
     void    *w;
     int ln;
     int nn;
+    int x;
+    int y;
+    int nc;
+    int nm;
 }	k_list;
 
 char	**ft_split(char const *s, char c);
@@ -56,6 +61,9 @@ int     ft_check_content(int c, char **mp);
 char	*ft_strdup(const char *s1);
 void    ft_creat_gm(char **mp);
 int     ft_action(void);
-int ft_manage_key(int  k, k_list *s);
+int ft_manage_key(int k, k_list *s);
+void    ft_fill_mp(k_list *s, char **mp, int i, int j);
+char	*ft_itoa(int n);
+void	ft_putstr(char *str);
 
 #endif

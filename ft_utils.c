@@ -6,20 +6,76 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:04:22 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 23:02:42 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/08 18:10:52 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void    ft_print_mov(k_list *s)
+{
+    char    *c;
+
+    c = ft_itoa(s->nm);
+    write(1, "move = ", 7);
+    ft_putstr(c);
+    write(1, "\n", 1);
+    mlx_string_put(s->mx, s->wn, 25, 25, 0xccccff, c);
+    free(c);
+}
+
+void    ft_move_action(int i, int x, int y, k_list *s)
+{
+    if (s->mp[y][x] == 'C')
+        s->nc--;
+    if (i == 0)
+        s->mp[y + 1][x] = '0';
+    else if (i == 1)
+        s->mp[y - 1][x] = '0';
+    else if (i == 2)
+        s->mp[y][x - 1] = '0';
+    else if (i == 3)
+        s->mp[y][x + 1] = '0';
+    s->mp[y][x] = 'P';
+    s->x = x;
+    s->y = y;
+    s->nm++;
+    ft_fill_mp(s, s->mp, 0, 0);
+    ft_print_mov(s);
+}
+
+void    ft_move(int i, int x, int y, k_list *s)
+{
+    if (s->mp[y][x] == '0' || s->mp[y][x] == 'C')
+        ft_move_action(i, x, y, s);
+    else if (s->mp[y][x] == 'E' && s->nc == 0)
+    {
+        write(1, "Winner Winner Chicken Dinner\n", 29);
+        exit (EXIT_SUCCESS);
+    }
+    // else if (s->mp[y][x] == 'N')
+    // {
+        
+    // }
+}
+
 int    ft_action(void)
 {
-    return (EXIT_SUCCESS);
+    exit (EXIT_SUCCESS);
     return (0);
 }
 
-int ft_manage_key(int  k, k_list *s)
+int ft_manage_key(int k, k_list *s)
 {
-    printf("%d", k);
-    return(0);
+    if (k == 53)
+        exit (EXIT_SUCCESS);
+    if (k == 13)
+        ft_move(0, s->x, s->y - 1, s);
+    if (k == 1)
+        ft_move(1, s->x, s->y + 1, s);    
+    if (k == 2)
+        ft_move(2, s->x + 1, s->y, s);    
+    if (k == 0)
+        ft_move(3, s->x - 1, s->y, s);    
+return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 00:15:27 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 19:47:49 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:47:49 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+void	ft_putstr(char *str);
 
 #endif

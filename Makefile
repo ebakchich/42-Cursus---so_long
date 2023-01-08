@@ -6,7 +6,7 @@
 #    By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/04 18:30:45 by ebakchic          #+#    #+#              #
-#    Updated: 2023/01/06 22:13:48 by ebakchic         ###   ########.fr        #
+#    Updated: 2023/01/07 21:40:19 by ebakchic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MAKER	= make re
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): ${OBJS}
 	@$(MAKE) -C libft
 	@$(CC) $(CFLAGS) -c $(SRCS)
 	@$(CC) $(MLX_FLAGS) -o ${NAME} ${AR} ${OBJS}

@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:48:15 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 21:35:44 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/08 02:17:57 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int ac, char **av)
 	if (fd == -1)
 		ft_error("Error\nfd not valid");
 	read_map(fd);
+	close(fd);
 	//system("leaks so_long");
 	return (0);
 }
