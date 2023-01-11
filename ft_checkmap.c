@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:02:35 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 21:36:31 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/11 05:50:15 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_check_components(char **mp)
 		j = 0;
 		while (mp[i][j] != '\0')
 		{
-			if (ft_strchr("01CEP", mp[i][j]) == NULL)
+			if (ft_strchr("01CEPN", mp[i][j]) == NULL)
 				ft_error("Error\nCheck components");
 			j++;
 		}
@@ -96,8 +96,9 @@ void	ft_checkmap(char **mp)
 	}
 	if (i <= 2)
 		ft_error("Error\nMap not valid");
-	if (i == l)
-		ft_error("Error\nThe map must be rectangular");
+	// if (i == l)
+	// 	ft_error("Error\nThe map must be rectangular");
+	ft_check_components(mp);
 	ft_check_wall(l, mp);
 	if (ft_check_content('E', mp) != 1)
 		ft_error("Error\nmap must contain 1 exit");
@@ -105,6 +106,7 @@ void	ft_checkmap(char **mp)
 		ft_error("Error\nThe map must contain 1 starting position");
 	if (ft_check_content('C', mp) == 0)
 		ft_error("Error\nThe map must contain at least 1 collectible,");
-	ft_check_path(mp);
-	ft_creat_gm(mp);
+	ft_check_path(mp, 0);
+	ft_check_path(mp, 1);
+	//ft_creat_gm(mp);
 }

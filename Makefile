@@ -6,7 +6,7 @@
 #    By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/04 18:30:45 by ebakchic          #+#    #+#              #
-#    Updated: 2023/01/08 20:39:05 by ebakchic         ###   ########.fr        #
+#    Updated: 2023/01/11 02:41:52 by ebakchic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME    = so_long
 OBJS 	= ${SRCS:.c=.o}
 AR		= libft/libft.a
 CC		= cc
-GFLAGS  = -Wall -Wextra -Werror 
+GFLAGS  = -Wall -Wextra -Werror -
 MLX_FLAGS    = -lmlx -framework OpenGL -framework Appkit
 MAKEC	= make clean
 MAKEF	= make fclean

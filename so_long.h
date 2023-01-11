@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:40:17 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/08 22:46:23 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/11 05:45:31 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_checkmap(char **mp);
 void	ft_error(char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-void    ft_check_path(char **mp);
+void    ft_check_path(char **mp, int k);
 int     ft_check_content(int c, char **mp);
 char	*ft_strdup(const char *s1);
 void    ft_creat_gm(char **mp);
