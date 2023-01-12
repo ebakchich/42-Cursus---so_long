@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:23:29 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/06 19:42:46 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:39:21 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,27 @@ char	*ft_read(int fd, char *saver)
 {
 	char	*buff;
 	int		rb;
-	int		b;
-	int	r;
+	int		r;
 
 	r = 0;
-	b = 1;
-	buff = ft_calloc(b + 1, sizeof(char));
+	buff = ft_calloc(2, sizeof(char));
 	if (!buff)
 		return (NULL);
 	rb = 1;
 	while (rb != 0)
 	{
-		rb = read(fd, buff, b);
+		rb = read(fd, buff, 1);
 		if (rb == -1)
 		{
 			free(buff);
 			return (NULL);
 		}
 		buff[rb] = '\0';
-		saver = ft_strjoin(r, saver, buff);
+		if (rb != 0)
+			saver = ft_strjoin(r, saver, buff);
 		r++;
 	}
 	free(buff);
-	if (saver[0] == '\0')
-		ft_error("Error\nMap empty");
 	return (saver);
 }
 
@@ -47,8 +44,19 @@ void	read_map(int fd)
 {
 	char	*saver;
 	char	**mp;
+	int		i;
 
+	i = 0;
 	saver = ft_read(fd, saver);
+	if (saver[0] == '\0' && saver == NULL)
+		ft_error("Error\nMap empty");
 	mp = ft_split(saver, '\n');
 	ft_checkmap(mp);
+	while (mp[i])
+	{
+		free(mp[i]);
+		i++;
+	}
+	free(mp);
+	free(saver);
 }

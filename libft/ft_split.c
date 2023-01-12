@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 22:13:55 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/05 20:56:31 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:10:53 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ char	**ft_split(char const *s, char c)
 	arr = ft_allocate(s, c, arr, words);
 	if (!arr)
 		return (NULL);
-	arr[words] = 0;
+	arr[words] = NULL;
 	return (arr);
 }

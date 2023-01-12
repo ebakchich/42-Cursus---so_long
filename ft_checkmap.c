@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:02:35 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/11 05:50:15 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:01:31 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_check_wall(int len, char **mp)
 {
 	int	i;
 	int	j;
-	
+
 	j = 0;
 	i = 1;
 	while (j < len)
@@ -96,8 +96,6 @@ void	ft_checkmap(char **mp)
 	}
 	if (i <= 2)
 		ft_error("Error\nMap not valid");
-	// if (i == l)
-	// 	ft_error("Error\nThe map must be rectangular");
 	ft_check_components(mp);
 	ft_check_wall(l, mp);
 	if (ft_check_content('E', mp) != 1)
@@ -108,5 +106,5 @@ void	ft_checkmap(char **mp)
 		ft_error("Error\nThe map must contain at least 1 collectible,");
 	ft_check_path(mp, 0);
 	ft_check_path(mp, 1);
-	//ft_creat_gm(mp);
+	ft_creat_gm(mp);
 }

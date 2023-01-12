@@ -6,60 +6,37 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 20:36:45 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/08 23:12:06 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:48:18 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int    ft_anim_c(k_list *s)
+int	ft_anim_c(t_listt *s)
 {
-    int	wid;
-	int	hei;
+	t_lst	a;
 
-    if (s->an == 500)
-    {
-        s->c = mlx_xpm_file_to_image(s->mx, "./img/c1.xpm", &wid, &hei);
-        if (!s->c)
-            ft_error("Error\n");
-        ft_fill_mp(s, s->mp, 0, 0);
-    }
-    if (s->an == 1000)
-    {
-        s->c = mlx_xpm_file_to_image(s->mx, "./img/c2.xpm", &wid, &hei);
-        if (!s->c)
-            ft_error("Error\n");
-        ft_fill_mp(s, s->mp, 0, 0);
-    }
-    if (s->an == 1500)
-    {
-        s->c = mlx_xpm_file_to_image(s->mx, "./img/c3.xpm", &wid, &hei);
-        if (!s->c)
-            ft_error("Error\n");
-        ft_fill_mp(s, s->mp, 0, 0);
-    }
-    if (s->an == 2000)
-    {
-        s->c = mlx_xpm_file_to_image(s->mx, "./img/c4.xpm", &wid, &hei);
-        if (!s->c)
-            ft_error("Error\n");
-        ft_fill_mp(s, s->mp, 0, 0);
-    }
-    if (s->an == 2500)
-    {
-        s->c = mlx_xpm_file_to_image(s->mx, "./img/c5.xpm", &wid, &hei);
-        if (!s->c)
-            ft_error("Error\n");
-        ft_fill_mp(s, s->mp, 0, 0);
-    }
-    if (s->an == 3000)
-    {
-        s->c = mlx_xpm_file_to_image(s->mx, "./img/c6.xpm", &wid, &hei);
-        if (!s->c)
-            ft_error("Error\n");
-        ft_fill_mp(s, s->mp, 0, 0);
-        s->an = 0;
-    }
-    s->an++;
-    return (0);
+	if (s->an == 500)
+		s->c = mlx_xpm_file_to_image(s->mx, "./img/c1.xpm", &a.wid, &a.hei);
+	if (s->an == 1000)
+		s->c = mlx_xpm_file_to_image(s->mx, "./img/c2.xpm", &a.wid, &a.hei);
+	if (s->an == 1500)
+		s->c = mlx_xpm_file_to_image(s->mx, "./img/c3.xpm", &a.wid, &a.hei);
+	if (s->an == 2000)
+		s->c = mlx_xpm_file_to_image(s->mx, "./img/c4.xpm", &a.wid, &a.hei);
+	if (s->an == 2500)
+		s->c = mlx_xpm_file_to_image(s->mx, "./img/c5.xpm", &a.wid, &a.hei);
+	if (s->an == 3000)
+	{
+		s->c = mlx_xpm_file_to_image(s->mx, "./img/c6.xpm", &a.wid, &a.hei);
+		s->an = 0;
+	}
+	if (s->an == 3000 || s->an == 2500
+		|| s->an == 2000 || s->an == 1500
+		|| s->an == 1000 || s->an == 500)
+		ft_fill_mp(s, s->mp, 0, 0);
+	if (!s->c)
+		ft_error("Error\n");
+	s->an++;
+	return (0);
 }
