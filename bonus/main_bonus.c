@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:48:15 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 20:36:49 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 23:45:45 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_check_ber(char *s)
 {
@@ -46,6 +46,5 @@ int	main(int ac, char **av)
 		ft_error("Error\nfd not valid");
 	read_map(fd);
 	close(fd);
-	//	system("leaks so_long");
 	return (0);
 }

@@ -6,13 +6,15 @@
 #    By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/04 18:30:45 by ebakchic          #+#    #+#              #
-#    Updated: 2023/01/12 17:59:38 by ebakchic         ###   ########.fr        #
+#    Updated: 2023/01/12 23:47:14 by ebakchic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS    = main.c read_map.c ft_checkmap.c ft_error.c ft_check_path.c ft_creat_gm.c ft_utils.c ft_anim_c.c ft_free.c
+SRCS    = mandatory/main.c mandatory/read_map.c mandatory/ft_checkmap.c mandatory/ft_error.c mandatory/ft_check_path.c mandatory/ft_creat_gm.c mandatory/ft_utils.c mandatory/ft_free.c
+BSRCS    = bonus/main_bonus.c bonus/read_map_bonus.c bonus/ft_checkmap_bonus.c bonus/ft_error_bonus.c bonus/ft_check_path_bonus.c bonus/ft_creat_gm_bonus.c bonus/ft_utils_bonus.c bonus/ft_anim_c_bonus.c bonus/ft_free_bonus.c
 NAME    = so_long
 OBJS 	= ${SRCS:.c=.o}
+BOBJS 	= ${BSRCS:.c=.o}
 AR		= libft/libft.a
 CC		= cc
 GFLAGS  = -Wall -Wextra -Werror -
@@ -25,12 +27,16 @@ all: $(NAME)
 
 $(NAME): ${OBJS}
 	@$(MAKE) -C libft
-	@$(CC) $(CFLAGS) -c $(SRCS)
 	@$(CC) $(MLX_FLAGS) -o ${NAME} ${AR} ${OBJS}
+
+bonus: ${BOBJS}
+	@$(MAKE) -C libft
+	@$(CC) $(MLX_FLAGS) -o ${NAME} ${AR} ${BOBJS}
 
 clean:
 	@$(MAKEC) -C libft
 	@${RM} ${OBJS}
+	@${RM} ${BOBJS}
 
 fclean: clean
 	@$(MAKEF) -C libft

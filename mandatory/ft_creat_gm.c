@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:19:33 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 18:20:24 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:28:20 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ void	ft_img(t_listt *s)
 
 	s->p = mlx_xpm_file_to_image(s->mx, "./img/p.xpm", &wid, &hei);
 	if (!s->p)
-		ft_error("Error\n");
+		ft_error("Error\nmlx_xpm_file_to_image return NULL");
 	s->e = mlx_xpm_file_to_image(s->mx, "./img/e.xpm", &wid, &hei);
 	if (!s->e)
-		ft_error("Error\n");
+		ft_error("Error\nmlx_xpm_file_to_image return NULL");
 	s->c = mlx_xpm_file_to_image(s->mx, "./img/c1.xpm", &wid, &hei);
 	if (!s->c)
-		ft_error("Error\n");
+		ft_error("Error\nmlx_xpm_file_to_image return NULL");
 	s->s = mlx_xpm_file_to_image(s->mx, "./img/s.xpm", &wid, &hei);
 	if (!s->s)
-		ft_error("Error\n");
+		ft_error("Error\nmlx_xpm_file_to_image return NULL");
 	s->w = mlx_xpm_file_to_image(s->mx, "./img/w.xpm", &wid, &hei);
 	if (!s->w)
-		ft_error("Error\n");
+		ft_error("Error\nmlx_xpm_file_to_image return NULL");
 	s->n = mlx_xpm_file_to_image(s->mx, "./img/n.xpm", &wid, &hei);
 	if (!s->n)
-		ft_error("Error\n");
+		ft_error("Error\nmlx_xpm_file_to_image return NULL");
 }
 
 void	ft_fill_mp(t_listt *s, char **mp, int i, int j)
@@ -121,7 +121,6 @@ void	ft_creat_gm(char **mp)
 	ft_img(&s);
 	ft_fill_mp(&s, mp, 0, 0);
 	mlx_hook(s.wn, 17, 0L, ft_action, &s);
-	mlx_loop_hook(s.mx, ft_anim_c, &s);
 	mlx_key_hook(s.wn, ft_manage_key, &s);
 	mlx_loop(s.mx);
 }

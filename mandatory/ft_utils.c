@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:04:22 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 18:22:30 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:26:16 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_print_mov(t_listt *s)
 	write(1, "move = ", 7);
 	ft_putstr(c);
 	write(1, "\n", 1);
-	mlx_string_put(s->mx, s->wn, 25, 25, 0xccccff, c);
 	free(c);
 }
 
@@ -54,13 +53,6 @@ void	ft_move(int i, int x, int y, t_listt *s)
 		ft_print_mov(s);
 		write(1, "Winner Winner Chicken Dinner\n", 29);
 		exit(EXIT_SUCCESS);
-	}
-	else if (s->mp[y][x] == 'N')
-	{
-		s->nm++;
-		ft_print_mov(s);
-		write(1, "Better Luck Next Time", 22);
-		exit(EXIT_FAILURE);
 	}
 }
 

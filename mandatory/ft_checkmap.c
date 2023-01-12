@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:02:35 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 18:01:31 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:06:25 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_check_components(char **mp)
 		j = 0;
 		while (mp[i][j] != '\0')
 		{
-			if (ft_strchr("01CEPN", mp[i][j]) == NULL)
+			if (ft_strchr("01CEP", mp[i][j]) == NULL)
 				ft_error("Error\nCheck components");
 			j++;
 		}
