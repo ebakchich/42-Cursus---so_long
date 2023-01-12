@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:07:53 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/04 21:31:18 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/12 23:49:58 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_error(char *s)
 {
-	printf("%s\n", s);
+	ft_putstr(s);
+	write(1, "\n", 1);
 	exit(EXIT_FAILURE);
 }
