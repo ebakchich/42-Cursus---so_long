@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:19:33 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 23:45:27 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:15:26 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	ft_fill_mp(t_listt *s, char **mp, int i, int j)
 		}
 		i++;
 	}
+	ft_print_mov(1, s);
 }
 
 void	ft_creat_gm(char **mp)

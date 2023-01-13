@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:40:17 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 23:44:58 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:13:38 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void	ft_putstr(char *str);
 int		ft_anim_c(t_listt *s);
 void	ft_fill_mp(t_listt *s, char **mp, int i, int j);
 void	ft_free(t_list *l);
+void	ft_print_mov(int i, t_listt *s);
 
 #endif

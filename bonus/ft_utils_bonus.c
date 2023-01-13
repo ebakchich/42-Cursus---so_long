@@ -6,21 +6,25 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:04:22 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 23:45:41 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:26:41 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_print_mov(t_listt *s)
+void	ft_print_mov(int i, t_listt *s)
 {
 	char	*c;
 
 	c = ft_itoa(s->nm);
-	write(1, "move = ", 7);
-	ft_putstr(c);
-	write(1, "\n", 1);
-	mlx_string_put(s->mx, s->wn, 25, 25, 0xccccff, c);
+	if (i == 0)
+	{
+		write(1, "move = ", 7);
+		ft_putstr(c);
+		write(1, "\n", 1);
+	}
+	else
+		mlx_string_put(s->mx, s->wn, 25, 25, 0x07FF09, c);
 	free(c);
 }
 
@@ -41,7 +45,7 @@ void	ft_move_action(int i, int x, int y, t_listt *s)
 	s->y = y;
 	s->nm++;
 	ft_fill_mp(s, s->mp, 0, 0);
-	ft_print_mov(s);
+	ft_print_mov(0, s);
 }
 
 void	ft_move(int i, int x, int y, t_listt *s)
@@ -51,14 +55,14 @@ void	ft_move(int i, int x, int y, t_listt *s)
 	else if (s->mp[y][x] == 'E' && s->nc == 0)
 	{
 		s->nm++;
-		ft_print_mov(s);
+		ft_print_mov(0, s);
 		write(1, "Winner Winner Chicken Dinner\n", 29);
 		exit(EXIT_SUCCESS);
 	}
 	else if (s->mp[y][x] == 'N')
 	{
 		s->nm++;
-		ft_print_mov(s);
+		ft_print_mov(0, s);
 		write(1, "Better Luck Next Time", 22);
 		exit(EXIT_FAILURE);
 	}
