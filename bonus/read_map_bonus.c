@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:23:29 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/17 17:52:35 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:36:29 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	read_map(int fd)
 	if (saver[0] == '\0' && saver == NULL)
 		ft_error("Error\nMap empty");
 	mp = ft_split(saver, '\n');
+	free(saver);
+	if (mp == NULL)
+		ft_error("Error\nMap not valid");
 	ft_checkmap(mp);
 	while (mp[i])
 	{
@@ -58,5 +61,4 @@ void	read_map(int fd)
 		i++;
 	}
 	free(mp);
-	free(saver);
 }
