@@ -6,7 +6,7 @@
 /*   By: ebakchic <ebakchic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:19:33 by ebakchic          #+#    #+#             */
-/*   Updated: 2023/01/12 21:28:20 by ebakchic         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:07:17 by ebakchic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	ft_fill_mp(t_listt *s, char **mp, int i, int j)
 		j = 0;
 		while (mp[i][j] != '\0')
 		{
+			if (ft_strchr("0CEPN1", mp[i][j]) != NULL)
+				mlx_put_image_to_window(s->mx, s->wn, s->s, j * 64, i * 64);
 			if (mp[i][j] == '1')
 				mlx_put_image_to_window (s->mx, s->wn, s->w, j * 64, i * 64);
-			if (ft_strchr("0CEPN", mp[i][j]) != NULL)
-				mlx_put_image_to_window(s->mx, s->wn, s->s, j * 64, i * 64);
 			if (mp[i][j] == 'P')
 				mlx_put_image_to_window(s->mx, s->wn, s->p, j * 64, i * 64);
 			if (mp[i][j] == 'C')
